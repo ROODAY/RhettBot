@@ -8,5 +8,7 @@
   "hubot-rules",
   "hubot-redis-brain",
   "hubot-shipit",
-  "hubot-auth"
+  "hubot-auth",
+  "hubot-murder",
+  "hubot-victory"
 ]
