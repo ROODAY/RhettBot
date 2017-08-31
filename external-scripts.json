@@ -10,5 +10,7 @@
   "hubot-shipit",
   "hubot-auth",
   "hubot-murder",
-  "hubot-victory"
+  "hubot-victory",
+  "hubot-ambush",
+  "hubot-youtube"
 ]
