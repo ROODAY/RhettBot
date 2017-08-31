@@ -17,4 +17,4 @@ module.exports = (robot) ->
           else
             res.reply "Didn't find your currency."
         catch jsonError
-          res.reply "ERROR: #{jsonError}"
+          res.reply "Didn't find your currency."
