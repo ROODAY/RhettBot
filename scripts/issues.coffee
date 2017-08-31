@@ -10,8 +10,18 @@ module.exports = (robot) ->
   github = require("githubot")(robot)
 
   robot.respond /issues (.*)/i, (res) ->
-    user = res.match[1].split("/")[0] || process.env.HUBOT_GITHUB_USER 
+    github.handleErrors (response) ->
+      res.reply "ERROR: #{response.error}!"
+      res.reply "ERROR CODE: #{response.statusCode}!"
+      res.reply "ERROR BODY: #{response.body}!"
+
     repo = res.match[1].split("/")[1]
+
+    if !repo
+      repo = res.match[1].split("/")[0]
+      user = process.env.HUBOT_GITHUB_USER 
+    else
+      user = res.match[1].split("/")[0]
 
     res.reply("#{user}/#{repo}")
 
