@@ -11,9 +11,7 @@ module.exports = (robot) ->
 
   robot.respond /issues (.*)/i, (res) ->
     github.handleErrors (response) ->
-      res.reply "ERROR: #{response.error}!"
-      res.reply "ERROR CODE: #{response.statusCode}!"
-      res.reply "ERROR BODY: #{response.body}!"
+      res.reply "ERROR: #{response.error}"
 
     repo = res.match[1].split("/")[1]
 
