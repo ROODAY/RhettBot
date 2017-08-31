@@ -5,10 +5,13 @@
 #   hubot crypto value <coin> - Returns value of coin in USD
 
 module.exports = (robot) ->
-  robot.respond /crypto value (.*)/i, (msg) ->
-    msg.http("https://www.bitstamp.net/api/v2/ticker/#{msg.match[1]}usd").get() (err, res, body) ->
-      json = JSON.parse(body)
-      if json.last
-        msg.send "Current Value: $#{json.last}"
+  robot.respond /crypto value (.*)/i, (res) ->
+    res.http("https://www.bitstamp.net/api/v2/ticker/#{res.match[1]}usd").get() (err, res, body) ->
+      if err
+        res.send "ERROR: #{err}"
       else
-        msg.send "Didn't find your currency."
+        json = JSON.parse(body)
+        if json.last
+          res.send "Current Value: $#{json.last}"
+        else
+          res.send "Didn't find your currency."
