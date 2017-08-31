@@ -2,7 +2,7 @@
 #   Show open issues from a Github repository
 #
 # Commands:
-#   hubot issues -- Shows all issues to follow up.
+#   hubot issues - Shows all issues to follow up.
 
 _  = require("underscore")
 
@@ -10,7 +10,7 @@ module.exports = (robot) ->
   github = require("githubot")(robot)
   #issues = process.env.HUBOT_FOLLOWUP_LABELS;
 
-  robot.respond /issues (.*)/i, (msg) ->
+  robot.respond /issues (.*)/i, (res) ->
     repo = res.match[1]
 
     # Query Parameter
