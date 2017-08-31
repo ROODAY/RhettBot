@@ -5,6 +5,7 @@
   "author": "Rudhra Raveendran <rudytheninja@gmail.com>",
   "description": "MakeBU's helpful little bot",
   "dependencies": {
+    "githubot": "^1.0.1",
     "hubot": "^2.19.0",
     "hubot-diagnostics": "0.0.2",
     "hubot-google-images": "^0.2.7",
