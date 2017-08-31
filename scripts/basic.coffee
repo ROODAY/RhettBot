@@ -1,3 +1,10 @@
+# Description:
+#   Example commands
+#
+# Commands:
+#   hubot annoy me - Annoys you. A lot.
+#   hubot unannoy me - Stops the annoyance.
+
 module.exports = (robot) ->
 
    robot.respond /open the (.*) doors/i, (res) ->
