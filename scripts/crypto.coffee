@@ -8,10 +8,10 @@
 # Author: jonwjones 
 
 module.exports = (robot) ->
-  robot.respond /crypto value (\w+)/i, (msg) ->
-    command = msg.match[0].toUpperCase()
-    dividend = command.match[1].split('/')[0]
-    divisor = command.match[1].split('/')[1]
+  robot.respond /crypto value (.*)/i, (msg) ->
+    command = msg.match[1].toUpperCase()
+    dividend = command.split('/')[0]
+    divisor = command.split('/')[1]
 
     msg.http('http://api.bitcoincharts.com/v1/weighted_prices.json').get() (err, res, body) ->
       json = JSON.parse(body)
