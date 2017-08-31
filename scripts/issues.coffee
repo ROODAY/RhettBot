@@ -8,15 +8,12 @@ _  = require("underscore")
 
 module.exports = (robot) ->
   github = require("githubot")(robot)
-  #issues = process.env.HUBOT_FOLLOWUP_LABELS;
 
   robot.respond /issues (.*)/i, (res) ->
     repo = res.match[1]
 
-    # Query Parameter
     query_params = state: "open", sort: "created"
     query_params.per_page=100
-    #query_params.labels = 'followup'
 
     base_url = process.env.HUBOT_GITHUB_API || 'https://api.github.com'
     github.get "#{base_url}/repos/#{process.env.HUBOT_GITHUB_USER}/#{repo}/issues", query_params, (issues) ->
