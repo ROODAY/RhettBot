@@ -19,7 +19,7 @@ module.exports = (robot) ->
     #query_params.labels = 'followup'
 
     base_url = process.env.HUBOT_GITHUB_API || 'https://api.github.com'
-    github.get "#{base_url}/repos/#{repo}/issues", query_params, (issues) ->
+    github.get "#{base_url}/repos/#{process.env.HUBOT_GITHUB_USER}/#{repo}/issues", query_params, (issues) ->
       if !_.isEmpty issues
         for issue in issues
           labels = ("`##{label.name}`" for label in issue.labels).join(" ")
