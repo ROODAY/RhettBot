@@ -10,8 +10,11 @@ module.exports = (robot) ->
       if error
         res.reply "ERROR: #{error}"
       else
-        json = JSON.parse(body)
-        if json.last
-          res.reply "Current Value: $#{json.last}"
-        else
-          res.reply "Didn't find your currency."
+        try
+          json = JSON.parse(body)
+          if json.last
+            res.reply "Current Value: $#{json.last}"
+          else
+            res.reply "Didn't find your currency."
+        catch jsonError
+          res.reply "ERROR: #{jsonError}"
