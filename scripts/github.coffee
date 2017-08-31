@@ -21,8 +21,6 @@ module.exports = (robot) ->
     else
       user = res.match[1].split("/")[0]
 
-    res.reply("#{user}/#{repo}")
-
     query_params = state: "open", sort: "created"
     query_params.per_page=100
 

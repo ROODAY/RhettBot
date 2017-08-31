@@ -86,11 +86,14 @@ module.exports = (robot) ->
     robot.brain.set 'totalSodas', 0
     res.reply 'zzzzz'
 
-  robot.respond /test my power/i, (msg) ->
+  robot.respond /test my power/i, (res) ->
     role = 'admin'
-    user = robot.brain.userForName(msg.message.user.name)
-    return msg.reply "#{name} does not exist" unless user?
+    user = robot.brain.userForName(res.message.user.name)
+    return res.reply "#{name} does not exist" unless user?
     unless robot.auth.hasRole(user, role)
-      msg.reply "Access Denied. You need role #{role} to perform this action."
+      res.reply "Access Denied. You need role #{role} to perform this action."
       return
-    msg.reply 'Such power!'
+    res.reply "Such power!"
+
+  robot.respond /my id/i, (res) ->
+    res.reply "Your id is #{res.message.user.id}"
