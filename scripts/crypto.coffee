@@ -6,7 +6,7 @@
 
 module.exports = (robot) ->
   robot.respond /crypto value (.*)/i, (res) ->
-    res.http("https://www.bitstamp.net/api/v2/ticker/#{res.match[1]}usd").get() (err, res, body) ->
+    res.http("https://www.bitstamp.net/api/v2/ticker/#{res.match[1]}usd").get() (error, response, body) ->
       if err
         res.reply "ERROR: #{err}"
       else
