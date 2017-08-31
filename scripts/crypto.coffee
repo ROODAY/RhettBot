@@ -9,14 +9,13 @@
 
 module.exports = (robot) ->
   robot.respond /crypto value (\w+)/i, (msg) ->
-		msg = msg.toUpperCase()
+    msg = msg.toUpperCase()
     dividend = msg.match[1].split('/')[0]
     divisor = msg.match[1].split('/')[1]
-    
+
     msg.http('http://api.bitcoincharts.com/v1/weighted_prices.json').get() (err, res, body) ->
       json = JSON.parse(body)
       if json[dividend] and json[divisor]
         msg.send "#{dividend} / #{divisor} #{json[dividend]['24h'] / json[divisor]['24h']}"
       else
         msg.send "Didn't find your currency."
-
