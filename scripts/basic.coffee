@@ -76,7 +76,7 @@ module.exports = (robot) ->
      sodasHad = robot.brain.get('totalSodas') * 1 or 0
   
      if sodasHad > 4
-       res.reply "I'm too fizzy.."
+       res.reply "I'm too fizzy... I've already had #{sodasHad} of them!"
   
      else
        res.reply 'Sure!'
