@@ -13,6 +13,8 @@ module.exports = (robot) ->
     user = res.match[1].split("/")[0] || process.env.HUBOT_GITHUB_USER 
     repo = res.match[1].split("/")[1]
 
+    res.reply("#{user}/#{repo}")
+
     query_params = state: "open", sort: "created"
     query_params.per_page=100
 
