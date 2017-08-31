@@ -1,21 +1,14 @@
 # Description:
-#   Gives the current value of a crypto currency in the desired currency
-#   EX: LTC/USD would give us the current usd value of litecoin
+#   Gives the current value of a crypto currency in USD
 #
 # Commands:
-#   hubot crypto value <coin/fiat>  - Returns a string stating the value of the currency wanted
-#
-# Author: jonwjones 
+#   hubot crypto value <coin> - Returns value of coin in USD
 
 module.exports = (robot) ->
   robot.respond /crypto value (.*)/i, (msg) ->
-    command = msg.match[1].toUpperCase()
-    dividend = command.split('/')[0]
-    divisor = command.split('/')[1]
-
-    msg.http('http://api.bitcoincharts.com/v1/weighted_prices.json').get() (err, res, body) ->
+    msg.http("https://www.bitstamp.net/api/v2/ticker/#{msg.match[1]}usd").get() (err, res, body) ->
       json = JSON.parse(body)
-      if json[dividend] and json[divisor]
-        msg.send "#{dividend} / #{divisor} #{json[dividend]['24h'] / json[divisor]['24h']}"
+      if json.last
+        msg.send "Current Value: $#{json.last}"
       else
         msg.send "Didn't find your currency."
